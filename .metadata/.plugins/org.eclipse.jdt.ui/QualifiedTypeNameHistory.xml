@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="lombok.Data"/>
+    <fullyQualifiedTypeName name="lombok.Getter"/>
+    <fullyQualifiedTypeName name="lombok.Setter"/>
+    <fullyQualifiedTypeName name="org.springframework.stereotype.Controller"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.GetMapping"/>
+    <fullyQualifiedTypeName name="ch01.Person"/>
+    <fullyQualifiedTypeName name="ch01.Person.PersonBuilder"/>
+    <fullyQualifiedTypeName name="java.util.Base64"/>
+    <fullyQualifiedTypeName name="ch02.Base64Strategy"/>
+    <fullyQualifiedTypeName name="ch02.NormalStrategy"/>
+    <fullyQualifiedTypeName name="ch02.AppendStrategy"/>
+    <fullyQualifiedTypeName name="ch02.EncodingStrategy"/>
+    <fullyQualifiedTypeName name="ch02.Endoder"/>
+    <fullyQualifiedTypeName name="java.net.URLEncoder"/>
+    <fullyQualifiedTypeName name="ch02.URLStrategy"/>
+    <fullyQualifiedTypeName name="java.nio.charset.StandardCharsets"/>
+</qualifiedTypeNameHistroy>
