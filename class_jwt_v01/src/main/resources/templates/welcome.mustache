@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Document</title>
+</head>
+<body>
+    <h2>환영!{{username}}</h2>
+    <p>액세스 토큰 : {{accessToken}}</p>
+    <p>리프레쉬 토큰 : {{refreshToken}}</p>
+
+    <!-- ssr 액세스 유효 시간 10분 -->
+    <form method="post" action="/refresh">
+        <input type="hidden" name="refreshToken" value="{{refreshToken}}">
+        <input type="submit" value="수동 토큰 갱신">
+    </form>
+
+    <script>
+        const refreshToken = "{{refreshToken}}";
+        const initialAccessToken = "{{accessToken}}";
+
+        async function refreshAccessToken() {
+            try {
+                const response = await fetch('/refresh', {
+                    method : 'POST',
+                    headers : {'Content-type' : 'application/x-www-form-urlencoded'},
+                    body : 'refreshToken=' + encodeURIComponent(refreshToken)
+                });
+                if(!response.ok) throw new Error ("갱신 실패");
+                const html = await response.text();
+                document.body.innerText = html; // 페이지 갱신 처리
+            }catch (e) {
+                console.error(e);
+                window.location.href = "/login"; // 실패시 로그인 페이지로 이동
+            }
+        }
+
+        // 호출 - setTimeout 단 한 번 실행됨
+        // setTimeout(refreshAccessToken, 1000 * 3);
+        // setTimeout(refreshAccessToken, 1000 * 3);
+        // 호출 - setInterval 3초마다 한번씩 계속 실행
+        setInterval(refreshAccessToken, 1000 * 3);
+    </script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.tenco.class_jwt_v01.mapper.UserMapper">
+
+    <insert id="save" parameterType="com.tenco.class_jwt_v01.domain.User">
+        INSERT INTO users(username, password, refresh_token)
+        VALUES (#{username}, #{password}, #{refreshToken})
+    </insert>
+
+    <select id="findByUsername" resultType="com.tenco.class_jwt_v01.domain.User">
+        SELECT * FROM users WHERE username = #{username}
+    </select>
+
+    <!-- 리프레시 토큰 업데이트 -->
+    <update id="updateRefreshToken" parameterType="com.tenco.class_jwt_v01.domain.User">
+        UPDATE users SET refresh_token = #{refreshToken} WHERE username = #{username}
+    </update>
+
+</mapper>
+
+
